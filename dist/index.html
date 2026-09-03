@@ -1,1 +1,141 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="字游山海：中文免费字体标本馆"><title>字游山海 · 字体实验室</title><link rel="stylesheet" href="styles.css"></head><body><div class="grain"></div><header class="topbar shell"><a class="brand" href="#top"><span class="brand-mark">字</span><span><b>字游山海</b><small>TYPE SPECIMEN LAB / 01</small></span></a><div class="status"><i></i> CDN READY <span>1,048 FONTS</span></div><button id="themeToggle" class="icon-button">☼</button></header><main id="top" class="shell"><div class="studio-head"><div><p class="eyebrow">FONT EXPLORER</p><h1>字体实验室</h1></div><p class="head-copy">把字放在光下，慢慢看它的骨骼。<br>所有字体按需从 CDN 加载，不打扰你的灵感。</p></div><section class="studio"><aside class="preview-panel"><div class="panel-label"><span>LIVE PREVIEW</span><span id="loadState">READY</span></div><div class="preview-stage"><span class="stage-index">A—01</span><span class="stage-seal">字<br>游</span><div class="preview-display" id="previewDisplay">春风得意<br>马蹄疾</div><div class="preview-english" id="previewEnglish">A quiet type specimen<br>for every kind of story.</div><span class="stage-note">春有百花秋有月<br>夏有凉风冬有雪</span></div><div class="preview-controls"><label>预览内容</label><div class="sample-buttons"><button class="sample active" data-sample="poem">诗词</button><button class="sample" data-sample="phrase">短句</button><button class="sample" data-sample="mix">中英混排</button><button class="sample" data-sample="custom">自定义</button></div><textarea id="customText" rows="2" placeholder="输入你的文字…" aria-label="自定义预览文字"></textarea></div><div class="selected-info"><div><span class="mini-label">CURRENT SPECIMEN</span><strong id="selectedName">霞鹜文楷</strong><span id="selectedMeta">LXGW WenKai · 6.4 MB</span></div><button id="clearSelected">清除选择 ×</button></div></aside><section class="library-panel" id="library"><div class="panel-label"><span>FONT CATALOG / 全部字体</span><span id="resultCount">加载中…</span></div><div class="library-tools"><label class="search">⌕ <input id="search" type="search" placeholder="搜索字体名称或英文名…"><kbd>⌘ K</kbd></label><div class="view-toggle"><button class="view active" data-view="grid">▦</button><button class="view" data-view="list">☷</button></div></div><div class="filter-row"><div class="tabs"><button class="tab active" data-filter="all">全部</button><button class="tab" data-filter="宋体">宋体</button><button class="tab" data-filter="黑体">黑体</button><button class="tab" data-filter="楷体">楷体</button><button class="tab" data-filter="手绘体">手绘</button><button class="tab" data-filter="艺术体">艺术</button></div><select id="sort" aria-label="排序字体"><option value="name">按名称</option><option value="size">按大小</option><option value="glyphs">按字形数</option></select></div><div class="font-grid" id="fontGrid"></div><div class="empty" id="empty">没有找到字体，换个关键词试试。</div><button class="load-more" id="loadMore">加载更多 <span>↓</span></button></section></section></main><footer id="about" class="footer shell"><span>字游山海 / TYPE SPECIMEN LAB</span><span>字体授权请以作者说明为准 ↗</span></footer><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="字游山海：千余款免费可商用字体库，点选即预览，按热门与风格快找。">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#c45c3e">
+  <title>字游山海 · 免费字体库</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css?v=ink22">
+</head>
+<body>
+  <header class="chrome">
+    <a class="brand" href="./">
+      <span class="brand-mark">字</span>
+      <span class="brand-name">字游山海</span>
+    </a>
+    <p class="slogan">
+      <strong>免费字体库</strong>
+      <span id="catalogTotal">千余款可商用</span>
+    </p>
+    <div class="chrome-right">
+      <button id="themeToggle" class="icon-button" type="button" aria-label="切换浅色">☼</button>
+    </div>
+  </header>
+
+  <main class="work">
+    <aside class="preview">
+      <div class="preview-stage">
+        <button id="theaterToggle" class="theater-btn" type="button" aria-pressed="false">全屏</button>
+        <button id="theaterPrev" class="theater-nav theater-prev" type="button" aria-label="上一款字体">‹</button>
+        <button id="theaterNext" class="theater-nav theater-next" type="button" aria-label="下一款字体">›</button>
+        <div class="preview-display" id="previewDisplay"></div>
+        <p class="theater-caption" id="theaterCaption" hidden></p>
+        <button class="preview-load" id="previewLoad" type="button" hidden>
+          <span class="preview-load-mark" aria-hidden="true">印</span>
+          <span id="previewLoadText">载入字样</span>
+        </button>
+      </div>
+      <div class="preview-dock">
+        <div class="preview-bar">
+          <div class="lang-rail" id="langButtons" role="radiogroup" aria-label="预览语种">
+            <button class="lang-chip sample active" type="button" role="radio" aria-checked="true" data-lang="zh">
+              <span class="lang-mark" aria-hidden="true">春</span>
+              <span class="lang-name">中文</span>
+            </button>
+            <button class="lang-chip sample" type="button" role="radio" aria-checked="false" data-lang="zh-en">
+              <span class="lang-mark mix" aria-hidden="true">春A</span>
+              <span class="lang-name">中英</span>
+            </button>
+            <button class="lang-chip sample" type="button" role="radio" aria-checked="false" data-lang="ko">
+              <span class="lang-mark" aria-hidden="true">한</span>
+              <span class="lang-name">韩文</span>
+            </button>
+            <button class="lang-chip sample" type="button" role="radio" aria-checked="false" data-lang="ja">
+              <span class="lang-mark" aria-hidden="true">あ</span>
+              <span class="lang-name">日文</span>
+            </button>
+            <button class="lang-chip sample" type="button" role="radio" aria-checked="false" data-lang="blend">
+              <span class="lang-mark mix" aria-hidden="true">春한</span>
+              <span class="lang-name">混合</span>
+            </button>
+            <button class="lang-chip sample" type="button" role="radio" aria-checked="false" data-lang="custom">
+              <span class="lang-mark edit" aria-hidden="true">笔</span>
+              <span class="lang-name">自定义</span>
+            </button>
+          </div>
+          <div class="len-rail length-buttons" id="lengthButtons" role="radiogroup" aria-label="预览句式">
+            <button class="len-seg length active" type="button" role="radio" aria-checked="true" data-length="short">单句</button>
+            <button class="len-seg length" type="button" role="radio" aria-checked="false" data-length="long">多句</button>
+          </div>
+        </div>
+        <section class="works" id="copyRow">
+          <div class="works-head">
+            <span class="works-label">名人作品</span>
+            <p class="work-cite" id="workCite"></p>
+          </div>
+          <div class="poet-rail" id="poetButtons" role="radiogroup" aria-label="作者"></div>
+          <div class="work-rail" id="workButtons" role="radiogroup" aria-label="篇目"></div>
+        </section>
+        <textarea id="customText" rows="3" placeholder="输入预览文字，换行即多句…" aria-label="自定义预览文字"></textarea>
+        <div class="selected">
+          <div class="selected-head">
+            <strong id="selectedName">未选择</strong>
+            <div class="font-actions">
+              <button id="downloadFont" type="button" disabled>下载</button>
+              <a id="fontHome" hidden target="_blank" rel="noopener noreferrer">主页</a>
+              <button id="clearSelected" type="button">清除</button>
+            </div>
+          </div>
+          <p id="selectedHint">点右侧卡片试读，热门在最前</p>
+          <div class="meta-block" id="metaBlock" hidden>
+            <div class="fit-tags" id="fitTags"></div>
+            <p class="meta-line" id="metaSheet"></p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="library" id="library">
+      <div class="toolbar">
+        <label class="search">
+          <input id="search" type="search" placeholder="搜名称、拼音、首字母…" autocomplete="off">
+          <kbd>⌘K</kbd>
+        </label>
+        <div class="filter-row">
+          <div class="tabs" role="tablist">
+            <button class="tab active" type="button" data-filter="hot">热门</button>
+            <button class="tab" type="button" data-filter="saved">收藏</button>
+            <button class="tab" type="button" data-filter="all">全部</button>
+            <button class="tab" type="button" data-filter="宋体">宋</button>
+            <button class="tab" type="button" data-filter="黑体">黑</button>
+            <button class="tab" type="button" data-filter="楷体">楷</button>
+            <button class="tab" type="button" data-filter="手绘体">手绘</button>
+            <button class="tab" type="button" data-filter="艺术体">艺术</button>
+          </div>
+          <div class="toolbar-tools">
+            <span id="resultCount" class="count">…</span>
+            <select id="sort" aria-label="排序">
+              <option value="usage">按热度</option>
+              <option value="name">按名称</option>
+              <option value="size">按大小</option>
+              <option value="glyphs">按字形</option>
+            </select>
+            <div class="view-toggle">
+              <button class="view active" type="button" data-view="grid" aria-label="网格">▦</button>
+              <button class="view" type="button" data-view="list" aria-label="列表">☰</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="font-grid" id="fontGrid"></div>
+      <div class="empty" id="empty">没有找到，换个词或看热门</div>
+    </section>
+  </main>
+  <script src="app.js?v=ink22"></script>
+</body>
+</html>
