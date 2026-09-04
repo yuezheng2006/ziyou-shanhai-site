@@ -35,25 +35,25 @@
 }
 
 body.light {
-  --bg: #efeee8;
-  --panel: #f7f6f1;
-  --card: #ffffff;
-  --ink: #171714;
-  --muted: #6f6d66;
-  --line: #d8d5cc;
-  --accent: #b6402f;
-  --accent-bright: #b6402f;
-  --gold: #b6402f;
+  --bg: #f2eee7;
+  --panel: #faf8f3;
+  --card: #fffdf9;
+  --ink: #292620;
+  --muted: #746e64;
+  --line: #ddd5c9;
+  --accent: #a84533;
+  --accent-bright: #963b2c;
+  --gold: #a84533;
   --color-focus: var(--accent);
-  --color-error: #b6402f;
-  --color-ok: #1f7a32;
+  --color-error: #a84533;
+  --color-ok: #286b3b;
   --color-on-accent: #fff8ee;
-  --card-hover: #f3f1ea;
-  --card-hot: #f6efe8;
-  --card-selected: #1c1816;
-  --card-selected-ink: #f3f1ea;
-  --wash: radial-gradient(120% 80% at 50% 40%, #f7f3ea 0%, #efeee8 68%);
-  --works: #f3ebe3;
+  --card-hover: #f8f2e9;
+  --card-hot: #f7ebe2;
+  --card-selected: #302923;
+  --card-selected-ink: #fffaf2;
+  --wash: radial-gradient(120% 80% at 50% 40%, #fbf6ed 0%, #f2eee7 68%);
+  --works: #f1e8dd;
 }
 
 * { box-sizing: border-box; }
