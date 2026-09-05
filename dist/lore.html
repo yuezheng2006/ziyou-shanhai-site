@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="字体冷知识：TTF、OTF、WOFF、WOFF2 的来历与差异。">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#c45c3e">
+  <title>字体冷知识 · 字游山海</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css?v=ink24">
+</head>
+<body class="lore-page">
+  <header class="chrome">
+    <a class="brand" href="./">
+      <span class="brand-mark">字</span>
+      <span class="brand-name">字游山海</span>
+    </a>
+    <p class="slogan">
+      <strong>字体冷知识</strong>
+      <span>格式差异一页看清</span>
+    </p>
+    <div class="chrome-right">
+      <a class="chrome-link" href="./">返回字库</a>
+      <button id="themeToggle" class="icon-button" type="button" aria-label="切换浅色">☼</button>
+    </div>
+  </header>
+
+  <main class="lore-shell">
+    <section class="lore-hero">
+      <p class="lore-kicker">FORMAT FIELD NOTES</p>
+      <h1>字体格式冷知识</h1>
+      <p class="lore-lead">
+        做 EPUB、网页或本地预览时，文件后缀决定兼容性、体积与排版能力。
+        下面按时间线拆开 TTF、OTF、WOFF、WOFF2。
+      </p>
+    </section>
+
+    <section class="lore-timeline" aria-label="格式时间线">
+      <article class="lore-panel" id="ttf" data-fmt="ttf">
+        <div class="lore-panel-head">
+          <strong>TTF</strong>
+          <span>TrueType · 1980s</span>
+        </div>
+        <h2>最古老，兼容最好</h2>
+        <p>苹果与微软在上世纪 80 年代推出，最初是为了对抗 Adobe 的 PostScript 生态。至今桌面系统、设计软件、电子书工具几乎都能打开。</p>
+        <ul>
+          <li>优势：兼容广、工具链成熟、调试成本低</li>
+          <li>短板：高级 OpenType 特性相对有限</li>
+          <li>常见场景：桌面安装、本地预览、字体源文件分发</li>
+        </ul>
+      </article>
+
+      <article class="lore-panel" id="otf" data-fmt="otf">
+        <div class="lore-panel-head">
+          <strong>OTF</strong>
+          <span>OpenType · 1990s</span>
+        </div>
+        <h2>专业排版更灵活</h2>
+        <p>微软与 Adobe 在上世纪 90 年代联合推出。可承载更丰富的字形替换、字偶、多语种与复杂文种排版规则。</p>
+        <ul>
+          <li>优势：特性表完整，适合书籍与品牌排版</li>
+          <li>短板：体积往往更大，网页直出不划算</li>
+          <li>常见场景：印刷、设计稿、高质量桌面字体</li>
+        </ul>
+      </article>
+
+      <article class="lore-panel" id="woff" data-fmt="woff">
+        <div class="lore-panel-head">
+          <strong>WOFF</strong>
+          <span>Web Open Font Format · W3C</span>
+        </div>
+        <h2>网页传输的压缩封装</h2>
+        <p>Mozilla 联合字体厂商推出，后成为 W3C 标准。本质是把 TTF/OTF 再压缩封装，专为浏览器下载设计。</p>
+        <ul>
+          <li>优势：比原始 TTF/OTF 更适合网络传输</li>
+          <li>短板：已被更小的 WOFF2 全面取代为首选</li>
+          <li>常见场景：兼容旧浏览器的后备字体</li>
+        </ul>
+      </article>
+
+      <article class="lore-panel" id="woff2" data-fmt="woff2">
+        <div class="lore-panel-head">
+          <strong>WOFF2</strong>
+          <span>Google · W3C · 首选</span>
+        </div>
+        <h2>现代 Web 的默认答案</h2>
+        <p>谷歌主导推进，现为 W3C 标准。体积通常比 WOFF 再小约 30%，比 TTF 小约 50%，现代浏览器支持完善。</p>
+        <ul>
+          <li>优势：体积小、加载快、浏览器支持好</li>
+          <li>短板：不适合作为桌面安装格式</li>
+          <li>常见场景：官网、应用内 WebView、在线预览站</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="lore-compare">
+      <h2>怎么选</h2>
+      <div class="lore-table-wrap">
+        <table class="lore-table">
+          <thead>
+            <tr>
+              <th>格式</th>
+              <th>定位</th>
+              <th>体积</th>
+              <th>推荐</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TTF</td>
+              <td>桌面兼容</td>
+              <td>偏大</td>
+              <td>本地安装 / 调试</td>
+            </tr>
+            <tr>
+              <td>OTF</td>
+              <td>专业排版</td>
+              <td>偏大</td>
+              <td>设计与印刷</td>
+            </tr>
+            <tr>
+              <td>WOFF</td>
+              <td>网页封装</td>
+              <td>中等</td>
+              <td>旧浏览器兜底</td>
+            </tr>
+            <tr>
+              <td>WOFF2</td>
+              <td>网页首选</td>
+              <td>更小</td>
+              <td>现代站点上线</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="lore-footnote">
+        本站字库多为桌面源文件（TTF / OTF / TTC）。在线试读按源格式加载；真正上线分发时，更推荐转换成 WOFF2。
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const saved = localStorage.getItem('ziku-theme');
+    if (saved === 'light') document.body.classList.add('light');
+    const toggle = document.querySelector('#themeToggle');
+    const sync = () => {
+      const light = document.body.classList.contains('light');
+      toggle.textContent = light ? '☾' : '☼';
+      toggle.setAttribute('aria-label', light ? '切换深色' : '切换浅色');
+    };
+    sync();
+    toggle.onclick = () => {
+      const light = document.body.classList.toggle('light');
+      localStorage.setItem('ziku-theme', light ? 'light' : 'dark');
+      sync();
+    };
+    const hash = location.hash.slice(1).toLowerCase();
+    if (hash) {
+      const panel = document.getElementById(hash);
+      if (panel) {
+        panel.classList.add('is-active');
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  </script>
+</body>
+</html>

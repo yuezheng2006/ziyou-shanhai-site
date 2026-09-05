@@ -683,17 +683,10 @@ function fontFormat(font) {
   return map[ext] || null;
 }
 
-function highlightLore(fmt) {
-  document.querySelectorAll('.lore-card').forEach((card) => {
-    card.classList.toggle('is-active', Boolean(fmt) && card.dataset.fmt === fmt.id);
-  });
-  const note = document.querySelector('#loreNote');
-  if (!note) return;
-  if (!fmt) {
-    note.textContent = '本库多为桌面源文件（TTF/OTF/TTC）；网页预览按源格式加载，上线分发更推荐转 WOFF2。';
-    return;
-  }
-  note.textContent = `当前字体源格式：${fmt.label}。${fmt.tip}；上线分发仍更推荐转 WOFF2。`;
+function syncLoreLink(fmt) {
+  const link = document.querySelector('#loreOpen');
+  if (!link) return;
+  link.href = fmt ? `./lore.html#${fmt.id}` : './lore.html';
 }
 
 function compactMeta(font) {
@@ -739,11 +732,11 @@ function showSelected(font) {
   block.hidden = false;
   tags.innerHTML = [
     `<span class="fit-tag" data-fit="${fit.id}" title="${fit.hint}">${fit.label}</span>`,
-    fmt ? `<span class="fit-tag" data-fmt="${fmt.id}" title="${fmt.tip}">${fmt.label}</span>` : '',
+    fmt ? `<a class="fit-tag" data-fmt="${fmt.id}" href="./lore.html#${fmt.id}" title="${fmt.tip}">${fmt.label}</a>` : '',
   ].join('');
   sheet.textContent = compactMeta(font);
   sheet.title = [font.en, font.version, font.postscript, font.copyright].filter(Boolean).join(' · ');
-  highlightLore(fmt);
+  syncLoreLink(fmt);
   const down = document.querySelector('#downloadFont');
   down.disabled = !font.path;
   down.textContent = font.path ? `下载 ${font.size}` : '下载';
@@ -766,7 +759,7 @@ function hideSelected() {
   document.querySelector('#metaBlock').hidden = true;
   document.querySelector('#fitTags').innerHTML = '';
   document.querySelector('#metaSheet').textContent = '';
-  highlightLore(null);
+  syncLoreLink(null);
   previewDisplay.classList.remove('is-live', 'is-ready');
   const down = document.querySelector('#downloadFont');
   down.disabled = true;
