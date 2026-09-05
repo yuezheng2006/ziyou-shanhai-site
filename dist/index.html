@@ -10,7 +10,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css?v=ink22">
+  <link rel="stylesheet" href="styles.css?v=ink23">
 </head>
 <body>
   <header class="chrome">
@@ -97,6 +97,31 @@
             <p class="meta-line" id="metaSheet"></p>
           </div>
         </div>
+        <details class="font-lore" id="fontLore">
+          <summary>
+            <span>字体冷知识</span>
+            <span class="lore-sub">TTF · OTF · WOFF · WOFF2</span>
+          </summary>
+          <div class="lore-grid" id="loreGrid">
+            <article class="lore-card" data-fmt="ttf">
+              <header><strong>TTF</strong><span>TrueType</span></header>
+              <p>最古老，苹果与微软上世纪 80 年代推出，为对抗 Adobe。兼容最好，高级排版能力有限。</p>
+            </article>
+            <article class="lore-card" data-fmt="otf">
+              <header><strong>OTF</strong><span>OpenType</span></header>
+              <p>微软与 Adobe 上世纪 90 年代推出。字形更灵活，适合专业排版与复杂字偶。</p>
+            </article>
+            <article class="lore-card" data-fmt="woff">
+              <header><strong>WOFF</strong><span>Web Open</span></header>
+              <p>Mozilla 联合字体厂商推出，W3C 标准。可理解为 TTF/OTF 的压缩封装，专为网页传输。</p>
+            </article>
+            <article class="lore-card" data-fmt="woff2">
+              <header><strong>WOFF2</strong><span>首选</span></header>
+              <p>谷歌主导，W3C 标准。比 WOFF 约小 30%，比 TTF 约小 50%，现代 Web 项目首选。</p>
+            </article>
+          </div>
+          <p class="lore-note" id="loreNote">本库多为桌面源文件（TTF/OTF/TTC）；网页预览按源格式加载，上线分发更推荐转 WOFF2。</p>
+        </details>
       </div>
     </aside>
 
@@ -136,6 +161,6 @@
       <div class="empty" id="empty">没有找到，换个词或看热门</div>
     </section>
   </main>
-  <script src="app.js?v=ink22"></script>
+  <script src="app.js?v=ink23"></script>
 </body>
 </html>
